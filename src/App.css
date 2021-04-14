@@ -1,0 +1,23 @@
+.App {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  background-color: transparent;
+  justify-content: center;
+  align-content: center;
+  overflow: hidden;
+}
+
+.BigNum {
+  font-family: 'Dimitri Swank','arial','san-serif';
+  font-size: 100px;
+  padding: 100px;
+}
+
+.ButtonBar {
+  justify-content: center;
+
+}
