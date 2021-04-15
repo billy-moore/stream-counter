@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { createMuiTheme, Grid, Paper, Slider, ThemeProvider } from '@material-ui/core'
+import { createMuiTheme, Grid, Paper, ThemeProvider } from '@material-ui/core'
 import { deepPurple, purple } from '@material-ui/core/colors'
 import './App.css';
 
@@ -8,6 +8,11 @@ import BigNumber from './Components/MainSections/BigNumber'
 import ButtonBar from './Components/MainSections/ButtonBar'
 import DarkToggle from './Components/MainSections/DarkToggle'
 import FontSelector from './Components/MainSections/FontSelector'
+import SizeSelector from './Components/MainSections/SizeSelector'
+import ColorSelectorBar from './Components/MainSections/ColorSelectorBar'
+
+import ColorModal from './HOCs/ColorModal'
+import Backdrop from '@material-ui/core/Backdrop';
 
 import { SketchPicker } from 'react-color'
 
@@ -17,6 +22,7 @@ function App() {
   const [fontStyle, setFontStyle] = useState('DimitriSwank')
   const [darkMode, setDarkMode] = useState(false)
   const [fontColor, setFontColor] = useState('')
+  const [modalOpen, setModalOpen] = useState(false)
   
   const theme = createMuiTheme({
     palette: {
@@ -79,6 +85,10 @@ function App() {
     setFontColor(color.hex)
   }
 
+  const modalToggleHandle = () => {
+    setModalOpen(!modalOpen)
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Paper className="App" >
@@ -111,38 +121,22 @@ function App() {
               font={ fontStyle }
               clicked={ changeFontHandler }
             />
-            {/* <Grid item xs={6}>
-                <FormControl variant='filled' >
-                  <InputLabel id='changeFont'>
-                      Change Font
-                  </InputLabel>
-                  <Select
-                      labelId='changeFont'
-                      id='font'
-                      value={fontStyle}
-                      onChange={changeFontHandler}
-                      
-                      >
-                      <MenuItem value={'DimitriSwank'}>Dimitri Swank</MenuItem>
-                      <MenuItem value={'Roboto'}>Roboto</MenuItem>
-                      <MenuItem value={'ZenDots'}>Zen Dots</MenuItem>
-                      <MenuItem value={'Arvo'} > - Arvo - </MenuItem>
-                      <MenuItem value={'Arial'}>Arial Black</MenuItem>
-                      
-                      </Select>
-                </FormControl>
-            </Grid> */}
-            <Grid item xs={9} style={{paddingTop: '50px'}}>
-              <Slider
-                  defaultValue={100}
-                  getAriaValueText={valuetext}
-                  aria-labelledby="discrete-slider-always"
-                  // step={25}
-                  marks={marks}
-                  valueLabelDisplay="on"
-                  onChange={setFontSizeHandler}
-                />
-            </Grid>
+
+          <Grid container item spacing={3}>
+            
+            <SizeSelector 
+              aria={ valuetext }
+              marks={ marks }
+              changed={ setFontSizeHandler }
+            />
+          </Grid>
+            <ColorModal 
+              modOpen={modalOpen}
+              clicked={modalToggleHandle}
+              backComp={Backdrop}
+            />
+            <ColorSelectorBar />
+            
             <Grid item xs={6}>
               <SketchPicker color={fontColor} onChange={setColorHandler}/>
             </Grid>
