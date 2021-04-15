@@ -1,29 +1,29 @@
 import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+
+import { createMuiTheme, Grid, MenuItem, FormControl, InputLabel, Paper, Select, Switch, TextField, ThemeProvider } from '@material-ui/core'
+import { deepPurple, purple } from '@material-ui/core/colors'
 import './App.css';
-import { createMuiTheme, Grid, MenuItem, FormControl, InputLabel, Paper, Select, Switch, ThemeProvider } from '@material-ui/core'
-import Number from './Components/Number'
+
 import AddButton from './Components/Buttons/AddButton'
 import SubtractButton from './Components/Buttons/SubtractButton'
 import SubDisabledButton from './Components/Buttons/SubDisabledButton'
 import ResetButton from './Components/Buttons/ResetButton'
 import ResetDisabledButton from './Components/Buttons/ResetDisabledButton'
-
-const useStyles = makeStyles((theme) => ({
-    formControl: {
-        margin: theme.spacing(1),
-        minWidth: 120,
-    }
-}));
-
+//import {MaterialPicker} from ''
 function App() {
   const [state, setState] = useState(0)
   const [fontStyle, setFontStyle] = useState('DimitriSwank')
   const [darkMode, setDarkMode] = useState(false)
-  const classes = useStyles()
+  const [textColor, setTextColor] = useState()
   
   const theme = createMuiTheme({
     palette: {
+      primary: {
+        main: deepPurple[500],
+      },
+      secondary: {
+        main: purple[500],
+      },
       type: darkMode ? 'dark' : 'light',
     },
   });
@@ -40,21 +40,30 @@ function App() {
     setState(0)
   }
 
+  const darkModeToggle = () => {
+    setDarkMode(!darkMode)
+  }
+
   const changeFontHandler = (event) => {
     setFontStyle(event.target.value)
     console.log(event.target.value)
   }
 
-  const darkModeToggle = () => {
-    setDarkMode(!darkMode)
+  
+  
+  const setColorHandler = (event) => {
+    setTextColor(event.target.value)
   }
 
   return (
     <ThemeProvider theme={theme}>
       <Paper className="App" >
-      <Grid container spacing={4}>
+      <Grid container spacing={4} className='mainGrid'>
         <Grid item xs={12} className={fontStyle} style={{height: '200px'}}>
-          <Number number={state} />
+          <span style={{color: {textColor}}}>
+            {state}
+          </span>
+          
         </Grid>
         <Grid container item spacing={3} className="ButtonBar">
           <Grid item>
@@ -75,7 +84,12 @@ function App() {
         </Grid>
         <Grid container item spacing={3} className="StyleBar">
             <Grid item>
-                <FormControl className={classes.formControl}>
+              <Switch checked={darkMode} onChange={darkModeToggle}/>
+              <br />
+                  {darkMode ? 'Dark Mode' : 'Light Mode'}
+            </Grid>
+            <Grid item xs={4}>
+                <FormControl variant='filled'>
                   <InputLabel id='changeFont'>
                       Change Font
                   </InputLabel>
@@ -85,15 +99,16 @@ function App() {
                       value={fontStyle}
                       onChange={changeFontHandler}
                       >
-                      <MenuItem value={'Roboto'}>Roboto</MenuItem>
                       <MenuItem value={'DimitriSwank'}>Dimitri Swank</MenuItem>
+                      <MenuItem value={'Roboto'}>Roboto</MenuItem>
                       <MenuItem value={'ZenDots'}>Zen Dots</MenuItem>
                       </Select>
                 </FormControl>
             </Grid>
             <Grid item>
-            <Switch checked={darkMode} onChange={darkModeToggle}/>
-                {darkMode ? 'Dark Mode' : 'Light Mode'}
+              <form noValidate autoComplete="off" onChange={setColorHandler}>
+                <TextField id="standard-basic" label='Change Color' helperText="use Hex Code (i.e. #000000)" variant='filled'/>
+              </form>
             </Grid>
         </Grid>
       </Grid>

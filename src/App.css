@@ -11,6 +11,16 @@
   overflow: hidden;
 }
 
+.mainGrid{
+  max-width: 600px;
+}
+.ButtonBar {
+  justify-content: center;
+}
+
+.StyleBar {
+  justify-content: center;
+}
 .DimitriSwank {
   font-family: 'Dimitri Swank','arial','san-serif';
   font-size: 100px;
@@ -29,10 +39,5 @@
   /* padding: 100px; */
 }
 
-.ButtonBar {
-  justify-content: center;
-}
 
-.StyleBar {
-  justify-content: center;
-}
+
