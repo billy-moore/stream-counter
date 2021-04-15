@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 
-import { createMuiTheme, Grid, MenuItem, FormControl, InputLabel, Paper, Select, Slider, Switch, ThemeProvider } from '@material-ui/core'
+import { createMuiTheme, Grid, Paper, Slider, ThemeProvider } from '@material-ui/core'
 import { deepPurple, purple } from '@material-ui/core/colors'
 import './App.css';
 
 import BigNumber from './Components/MainSections/BigNumber'
 import ButtonBar from './Components/MainSections/ButtonBar'
+import DarkToggle from './Components/MainSections/DarkToggle'
+import FontSelector from './Components/MainSections/FontSelector'
 
 import { SketchPicker } from 'react-color'
 
@@ -80,28 +82,36 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Paper className="App" >
-      <Grid container spacing={4} className='mainGrid'>
-        <Grid container item spacing={4} className='topSection'>
-          <BigNumber 
-            color={fontColor} 
-            size={fontSizeState} 
-            fontFam={fontStyle} 
-            state={state}
-          />
-          <ButtonBar 
-            addClick={addHandler}
-            subClick={subHandler}
-            resetClick={resetHandler}
-            state={state}
-          />
-        </Grid>
-        <Grid container item spacing={3} className="StyleBar">
-            <Grid item>
-              <Switch checked={darkMode} onChange={darkModeToggle}/>
-              <br />
-                  {darkMode ? 'Dark Mode' : 'Light Mode'}
-            </Grid>
-            <Grid item xs={6}>
+        <Grid container spacing={4} className='mainGrid'>
+          
+          <Grid container item spacing={4} className='topSection'>
+            
+            <BigNumber 
+              color={fontColor} 
+              size={fontSizeState} 
+              fontFam={fontStyle} 
+              state={state}
+            />
+            <ButtonBar 
+              addClick={addHandler}
+              subClick={subHandler}
+              resetClick={resetHandler}
+              state={state}
+            />
+
+          </Grid>
+
+          <Grid container item spacing={3} className="StyleBar">
+            
+            <DarkToggle 
+              mode={darkMode}
+              clicked={darkModeToggle}
+            />
+            <FontSelector 
+              font={ fontStyle }
+              clicked={ changeFontHandler }
+            />
+            {/* <Grid item xs={6}>
                 <FormControl variant='filled' >
                   <InputLabel id='changeFont'>
                       Change Font
@@ -121,7 +131,7 @@ function App() {
                       
                       </Select>
                 </FormControl>
-            </Grid>
+            </Grid> */}
             <Grid item xs={9} style={{paddingTop: '50px'}}>
               <Slider
                   defaultValue={100}
