@@ -5,11 +5,8 @@ import { deepPurple, purple } from '@material-ui/core/colors'
 import './App.css';
 
 import BigNumber from './Components/MainSections/BigNumber'
-import AddButton from './Components/Buttons/AddButton'
-import SubtractButton from './Components/Buttons/SubtractButton'
-import SubDisabledButton from './Components/Buttons/SubDisabledButton'
-import ResetButton from './Components/Buttons/ResetButton'
-import ResetDisabledButton from './Components/Buttons/ResetDisabledButton'
+import ButtonBar from './Components/MainSections/ButtonBar'
+
 import { SketchPicker } from 'react-color'
 
 function App() {
@@ -85,24 +82,18 @@ function App() {
       <Paper className="App" >
       <Grid container spacing={4} className='mainGrid'>
         <Grid container item spacing={4} className='topSection'>
-          <BigNumber color={fontColor} size={fontSizeState} fontFam={fontStyle} state={state}/>
-          <Grid container item spacing={3} className="ButtonBar">
-            <Grid item>
-              <AddButton clicked={addHandler} />
-            </Grid>
-            <Grid item >
-              {state > 0 ? 
-                <SubtractButton clicked={subHandler} />  : 
-                <SubDisabledButton />
-                }     
-            </Grid>
-            <Grid item>
-              { state > 0 ?
-              <ResetButton clicked={resetHandler}/> :
-              <ResetDisabledButton />
-              }
-              </Grid>
-          </Grid>
+          <BigNumber 
+            color={fontColor} 
+            size={fontSizeState} 
+            fontFam={fontStyle} 
+            state={state}
+          />
+          <ButtonBar 
+            addClick={addHandler}
+            subClick={subHandler}
+            resetClick={resetHandler}
+            state={state}
+          />
         </Grid>
         <Grid container item spacing={3} className="StyleBar">
             <Grid item>
