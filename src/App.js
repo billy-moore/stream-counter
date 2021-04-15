@@ -16,7 +16,7 @@ function App() {
   const [fontSizeState, setFontSizeState] = useState(100)
   const [fontStyle, setFontStyle] = useState('DimitriSwank')
   const [darkMode, setDarkMode] = useState(false)
-  const [fontColor, setFontColor] = useState('#000000')
+  const [fontColor, setFontColor] = useState('')
   
   const theme = createMuiTheme({
     palette: {

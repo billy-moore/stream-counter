@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'Dimitri-Swank';
-  src:url('./HOCs/fonts/Dimitri-Swank.ttf.woff') format('woff'),
-      url('./HOCs/fonts/Dimitri-Swank.ttf.svg#Dimitri-Swank') format('svg'),
-      url('./HOCs/fonts/Dimitri-Swank.ttf.eot'),
-      url('./HOCs/fonts/Dimitri-Swank.ttf.eot?#iefix') format('embedded-opentype'); 
+  src:url('./HOCs/fonts/Dimitri-Swank.ttf.c240f840.woff') format('woff'),
+      url('./HOCs/fonts/Dimitri-Swank.ttf.18d64c91.svg') format('svg'),
+      url('./HOCs/fonts/Dimitri-Swank.ttf.cf92afcb.eot');
+      /* url('./HOCs/fonts/Dimitri-Swank.ttf.eot?#iefix') format('embedded-opentype');  */
   font-weight: normal;
   font-style: normal;
 }
