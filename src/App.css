@@ -11,13 +11,28 @@
   overflow: hidden;
 }
 
-.BigNum {
+.DimitriSwank {
   font-family: 'Dimitri Swank','arial','san-serif';
   font-size: 100px;
-  padding: 100px;
+  /* padding: 400px; */
+}
+
+.Roboto {
+  font-family: 'Roboto','arial','san-serif';
+  font-size: 100px;
+  /* padding-bottom: 100px; */
+}
+
+.ZenDots {
+  font-family: 'Zen Dots','arial','san-serif';
+  font-size: 100px;
+  /* padding: 100px; */
 }
 
 .ButtonBar {
   justify-content: center;
+}
 
+.StyleBar {
+  justify-content: center;
 }
