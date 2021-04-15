@@ -21,6 +21,7 @@
 .StyleBar {
   justify-content: center;
 }
+
 .DimitriSwank {
   font-family: 'Dimitri Swank','arial','san-serif';
   font-size: 100px;
@@ -39,5 +40,14 @@
   /* padding: 100px; */
 }
 
+.Arvo {
+  font-family: 'Arvo','arial','san-serif';
+  font-size: 100px;
+  /* padding: 100px; */
+}
 
-
+.Arial {
+  font-family: 'arial-black','san-serif';
+  font-size: 100px;
+  /* padding: 100px; */
+}

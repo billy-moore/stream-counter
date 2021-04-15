@@ -88,7 +88,7 @@ function App() {
                   {darkMode ? 'Dark Mode' : 'Light Mode'}
             </Grid>
             <Grid item xs={4}>
-                <FormControl variant='filled'>
+                <FormControl variant='filled' >
                   <InputLabel id='changeFont'>
                       Change Font
                   </InputLabel>
@@ -97,10 +97,14 @@ function App() {
                       id='font'
                       value={fontStyle}
                       onChange={changeFontHandler}
+                      
                       >
                       <MenuItem value={'DimitriSwank'}>Dimitri Swank</MenuItem>
                       <MenuItem value={'Roboto'}>Roboto</MenuItem>
                       <MenuItem value={'ZenDots'}>Zen Dots</MenuItem>
+                      <MenuItem value={'Arvo'} > - Arvo - </MenuItem>
+                      <MenuItem value={'Arial'}>Arial Black</MenuItem>
+                      
                       </Select>
                 </FormControl>
             </Grid>
