@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/stream-counter/static/css/main.6984a6a1.chunk.css",
-    "main.js": "/stream-counter/static/js/main.aa03683a.chunk.js",
-    "main.js.map": "/stream-counter/static/js/main.aa03683a.chunk.js.map",
-    "runtime-main.js": "/stream-counter/static/js/runtime-main.3bfe65d9.js",
-    "runtime-main.js.map": "/stream-counter/static/js/runtime-main.3bfe65d9.js.map",
-    "static/js/2.97ea5ce3.chunk.js": "/stream-counter/static/js/2.97ea5ce3.chunk.js",
-    "static/js/2.97ea5ce3.chunk.js.map": "/stream-counter/static/js/2.97ea5ce3.chunk.js.map",
-    "static/js/3.8d2c557e.chunk.js": "/stream-counter/static/js/3.8d2c557e.chunk.js",
-    "static/js/3.8d2c557e.chunk.js.map": "/stream-counter/static/js/3.8d2c557e.chunk.js.map",
+    "main.css": "/stream-counter/static/css/main.479dcbee.chunk.css",
+    "main.js": "/stream-counter/static/js/main.274a5d3a.chunk.js",
+    "main.js.map": "/stream-counter/static/js/main.274a5d3a.chunk.js.map",
+    "runtime-main.js": "/stream-counter/static/js/runtime-main.7d99d7f6.js",
+    "runtime-main.js.map": "/stream-counter/static/js/runtime-main.7d99d7f6.js.map",
+    "static/js/2.fb35f9ed.chunk.js": "/stream-counter/static/js/2.fb35f9ed.chunk.js",
+    "static/js/2.fb35f9ed.chunk.js.map": "/stream-counter/static/js/2.fb35f9ed.chunk.js.map",
+    "static/js/3.38071365.chunk.js": "/stream-counter/static/js/3.38071365.chunk.js",
+    "static/js/3.38071365.chunk.js.map": "/stream-counter/static/js/3.38071365.chunk.js.map",
     "index.html": "/stream-counter/index.html",
-    "static/css/main.6984a6a1.chunk.css.map": "/stream-counter/static/css/main.6984a6a1.chunk.css.map",
-    "static/js/2.97ea5ce3.chunk.js.LICENSE.txt": "/stream-counter/static/js/2.97ea5ce3.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/stream-counter/static/media/Dimitri-Swank.ttf.cf92afcb.eot"
+    "static/css/main.479dcbee.chunk.css.map": "/stream-counter/static/css/main.479dcbee.chunk.css.map",
+    "static/js/2.fb35f9ed.chunk.js.LICENSE.txt": "/stream-counter/static/js/2.fb35f9ed.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/stream-counter/static/media/Dimitri-Swank.ttf.cf92afcb.cf92afcb.eot"
   },
   "entrypoints": [
-    "static/js/runtime-main.3bfe65d9.js",
-    "static/js/2.97ea5ce3.chunk.js",
-    "static/css/main.6984a6a1.chunk.css",
-    "static/js/main.aa03683a.chunk.js"
+    "static/js/runtime-main.7d99d7f6.js",
+    "static/js/2.fb35f9ed.chunk.js",
+    "static/css/main.479dcbee.chunk.css",
+    "static/js/main.274a5d3a.chunk.js"
   ]
 }

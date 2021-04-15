@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Button, createMuiTheme, Grid, Paper, ThemeProvider, Tooltip } from '@material-ui/core'
+import { Button, createMuiTheme, Grid, Paper, ThemeProvider } from '@material-ui/core'
 import { deepPurple, purple } from '@material-ui/core/colors'
 import './App.css';
 
@@ -27,9 +27,11 @@ function App() {
     palette: {
       primary: {
         main: deepPurple[500],
+        // 
       },
       secondary: {
         main: purple[500],
+        // 
       },
       type: darkMode ? 'dark' : 'light',
     },
@@ -107,12 +109,10 @@ function App() {
           </Grid>
 
           <Grid container item spacing={3} className="StyleBar">
-            <Tooltip title='Warning' aria-label='Resets Custom Colors'>
             <DarkToggle 
               mode={darkMode}
               clicked={darkModeToggle}
             />
-            </Tooltip>
             <FontSelector 
               font={ fontStyle }
               clicked={ changeFontHandler }
