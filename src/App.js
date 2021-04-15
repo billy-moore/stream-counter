@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { createMuiTheme, Grid, MenuItem, FormControl, InputLabel, Paper, Select, Switch, TextField, ThemeProvider } from '@material-ui/core'
+import { createMuiTheme, Grid, MenuItem, FormControl, InputLabel, Paper, Select, Switch, ThemeProvider } from '@material-ui/core'
 import { deepPurple, purple } from '@material-ui/core/colors'
 import './App.css';
 
@@ -9,12 +9,13 @@ import SubtractButton from './Components/Buttons/SubtractButton'
 import SubDisabledButton from './Components/Buttons/SubDisabledButton'
 import ResetButton from './Components/Buttons/ResetButton'
 import ResetDisabledButton from './Components/Buttons/ResetDisabledButton'
-//import {MaterialPicker} from ''
+import { TwitterPicker } from 'react-color'
+
 function App() {
   const [state, setState] = useState(0)
   const [fontStyle, setFontStyle] = useState('DimitriSwank')
   const [darkMode, setDarkMode] = useState(false)
-  const [textColor, setTextColor] = useState()
+  const [fontColor, setFontColor] = useState({color: ''})
   
   const theme = createMuiTheme({
     palette: {
@@ -42,6 +43,7 @@ function App() {
 
   const darkModeToggle = () => {
     setDarkMode(!darkMode)
+    setFontColor({color: ''})
   }
 
   const changeFontHandler = (event) => {
@@ -49,10 +51,8 @@ function App() {
     console.log(event.target.value)
   }
 
-  
-  
-  const setColorHandler = (event) => {
-    setTextColor(event.target.value)
+  const setColorHandler = (color) => {
+    setFontColor({color: color.hex})
   }
 
   return (
@@ -60,7 +60,7 @@ function App() {
       <Paper className="App" >
       <Grid container spacing={4} className='mainGrid'>
         <Grid item xs={12} className={fontStyle} style={{height: '200px'}}>
-          <span style={{color: {textColor}}}>
+          <span style={fontColor}>
             {state}
           </span>
           
@@ -106,9 +106,7 @@ function App() {
                 </FormControl>
             </Grid>
             <Grid item>
-              <form noValidate autoComplete="off" onChange={setColorHandler}>
-                <TextField id="standard-basic" label='Change Color' helperText="use Hex Code (i.e. #000000)" variant='filled'/>
-              </form>
+              <TwitterPicker color={fontColor} onChange={setColorHandler}/>
             </Grid>
         </Grid>
       </Grid>
