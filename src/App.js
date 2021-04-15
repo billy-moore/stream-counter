@@ -48,7 +48,6 @@ function App() {
 
   const changeFontHandler = (event) => {
     setFontStyle(event.target.value)
-    console.log(event.target.value)
   }
 
   const setColorHandler = (color) => {
