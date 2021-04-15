@@ -2,10 +2,6 @@ import React from 'react'
 
 import { Button, Grid, } from '@material-ui/core'
 
-import ColorPickDialog from '../../HOCs/ColorPickDialog'
-
-
-import StopIcon from '@material-ui/icons/Stop';
  
 const ColorSelectorBar = ( props ) => {
     return (
@@ -13,6 +9,7 @@ const ColorSelectorBar = ( props ) => {
             <Grid item>
                 <Button 
                     variant="contained"
+                    key='font'
                     //color="primary"
                     startIcon={ <StopIcon /> }
                     onClick={ props.fontChange }
@@ -21,9 +18,11 @@ const ColorSelectorBar = ( props ) => {
             <Grid item>
                 <Button 
                     variant="contained"
+                    key='Background'
                     //color="secondary"
                     startIcon={ <StopIcon /> }
                     onClick={ props.bkgroundChange }
+
                 >BackGround Color</Button>
             </Grid>
         </Grid>

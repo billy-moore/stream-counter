@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { createMuiTheme, Grid, Paper, ThemeProvider } from '@material-ui/core'
+import { Button, createMuiTheme, Grid, Paper, ThemeProvider } from '@material-ui/core'
 import { deepPurple, purple } from '@material-ui/core/colors'
 import './App.css';
 
@@ -9,8 +9,9 @@ import ButtonBar from './Components/MainSections/ButtonBar'
 import DarkToggle from './Components/MainSections/DarkToggle'
 import FontSelector from './Components/MainSections/FontSelector'
 import SizeSelector from './Components/MainSections/SizeSelector'
-import ColorSelectorBar from './Components/MainSections/ColorSelectorBar'
 import ColorPickDialog from './HOCs/ColorPickDialog'
+
+import StopIcon from '@material-ui/icons/Stop';
 
 function App() {
   const [state, setState] = useState(0)
@@ -18,7 +19,9 @@ function App() {
   const [fontStyle, setFontStyle] = useState('DimitriSwank')
   const [darkMode, setDarkMode] = useState(false)
   const [fontColor, setFontColor] = useState('')
-  const [dialogOpen, setDialogOpen] = useState(false)
+  const [bkgroundColor, setBkGroundColor] = useState('')
+  const [fontdialogOpen, setFontDialogOpen] = useState(false)
+  const [bkgrounddialogOpen, setbkgroundDialogOpen] = useState(false)
   
   const theme = createMuiTheme({
     palette: {
@@ -32,20 +35,6 @@ function App() {
     },
   });
 
-  const marks = [
-    {
-      value: 0,
-      label: '0px',
-    },
-    { 
-      value: 50,
-      label: '50px'
-    },
-    {
-      value: 100,
-      label: '100px',
-    },
-  ];
 
   const addHandler = () => {
     setState(state + 1)
@@ -61,7 +50,8 @@ function App() {
 
   const darkModeToggle = () => {
     setDarkMode(!darkMode)
-    setFontColor('#0000000')
+    setFontColor('')
+    setBkGroundColor('')
   }
 
   const changeFontHandler = (event) => {
@@ -76,13 +66,20 @@ function App() {
     setFontSizeState(newValue)
   }
 
-  const setColorHandler = (color) => {
-    console.log(color.hex)
+  const fontColorDialogToggle = () => {
+    setFontDialogOpen(!fontdialogOpen)
+  }
+
+  const bkgroundColorDialogToggle = () => {
+    setbkgroundDialogOpen(!bkgrounddialogOpen)
+  }
+
+  const setFontColorHandler = (color) => {
     setFontColor(color.hex)
   }
 
-  const dialogToggleHandler = () => {
-    setDialogOpen(!dialogOpen)
+  const setbkgroundHandler = (color) => {
+    setBkGroundColor(color.hex)
   }
 
   return (
@@ -97,6 +94,7 @@ function App() {
               size={fontSizeState} 
               fontFam={fontStyle} 
               state={state}
+              background={bkgroundColor}
             />
             <ButtonBar 
               addClick={addHandler}
@@ -118,22 +116,46 @@ function App() {
               clicked={ changeFontHandler }
             />
 
-          <Grid container item spacing={3}>
+          <Grid container item spacing={3} className='numberSize'>
             
             <SizeSelector 
               aria={ valuetext }
-              marks={ marks }
               changed={ setFontSizeHandler }
             />
           </Grid>
-            <ColorPickDialog 
-              open={ dialogOpen }
-              closed = { dialogToggleHandler }
-            />
-            <ColorSelectorBar 
-              fontChange={dialogToggleHandler}
-              bkgroundChange={dialogToggleHandler}
-            />
+          <Grid container item spacing={3}>
+          <ColorPickDialog 
+            open={ fontdialogOpen }
+            color={ fontColor }
+            changed={ setFontColorHandler }
+            closed={ fontColorDialogToggle }
+          />
+          <ColorPickDialog 
+            open={ bkgrounddialogOpen }
+            color={ bkgroundColor }
+            changed={ setbkgroundHandler }
+            closed={ bkgroundColorDialogToggle }
+          />
+            <Grid item>
+                <Button 
+                    variant="contained"
+                    key='font'
+                    //color="primary"
+                    startIcon={ <StopIcon /> }
+                    onClick={ fontColorDialogToggle }
+                >Font Color</Button>
+            </Grid>
+            <Grid item>
+                <Button 
+                    variant="contained"
+                    key='Background'
+                    //color="secondary"
+                    startIcon={ <StopIcon /> }
+                    onClick={ bkgroundColorDialogToggle }
+                    
+                >BackGround Color</Button>
+            </Grid>
+          </Grid>
             </Grid>
       </Grid>
       </Paper>
