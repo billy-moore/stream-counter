@@ -1,5 +1,5 @@
 .App {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: grid;
   text-align: center;
@@ -8,11 +8,17 @@
   background-color: transparent;
   justify-content: center;
   align-content: center;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .mainGrid{
-  max-width: 600px;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+.numberSection {
+  padding-top: 20px;
 }
 .ButtonBar {
   justify-content: center;

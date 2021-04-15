@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { createMuiTheme, Grid, MenuItem, FormControl, InputLabel, Paper, Select, Switch, ThemeProvider } from '@material-ui/core'
+import { createMuiTheme, Grid, MenuItem, FormControl, InputLabel, Paper, Select, Slider, Switch, ThemeProvider } from '@material-ui/core'
 import { deepPurple, purple } from '@material-ui/core/colors'
 import './App.css';
 
@@ -9,13 +9,14 @@ import SubtractButton from './Components/Buttons/SubtractButton'
 import SubDisabledButton from './Components/Buttons/SubDisabledButton'
 import ResetButton from './Components/Buttons/ResetButton'
 import ResetDisabledButton from './Components/Buttons/ResetDisabledButton'
-import { TwitterPicker } from 'react-color'
+import { SketchPicker } from 'react-color'
 
 function App() {
   const [state, setState] = useState(0)
+  const [fontSizeState, setFontSizeState] = useState(100)
   const [fontStyle, setFontStyle] = useState('DimitriSwank')
   const [darkMode, setDarkMode] = useState(false)
-  const [fontColor, setFontColor] = useState({color: ''})
+  const [fontColor, setFontColor] = useState('#000000')
   
   const theme = createMuiTheme({
     palette: {
@@ -28,6 +29,21 @@ function App() {
       type: darkMode ? 'dark' : 'light',
     },
   });
+
+  const marks = [
+    {
+      value: 0,
+      label: '0px',
+    },
+    { 
+      value: 50,
+      label: '50px'
+    },
+    {
+      value: 100,
+      label: '100px',
+    },
+  ];
 
   const addHandler = () => {
     setState(state + 1)
@@ -43,43 +59,53 @@ function App() {
 
   const darkModeToggle = () => {
     setDarkMode(!darkMode)
-    setFontColor({color: ''})
+    setFontColor('#0000000')
   }
 
   const changeFontHandler = (event) => {
     setFontStyle(event.target.value)
   }
 
+  const valuetext = (value) => {
+    return `${value}`
+  }
+
+  const setFontSizeHandler = (event, newValue) => {
+    setFontSizeState(newValue)
+  }
+
   const setColorHandler = (color) => {
-    setFontColor({color: color.hex})
+    console.log(color.hex)
+    setFontColor(color.hex)
   }
 
   return (
     <ThemeProvider theme={theme}>
       <Paper className="App" >
       <Grid container spacing={4} className='mainGrid'>
-        <Grid item xs={12} className={fontStyle} style={{height: '200px'}}>
-          <span style={fontColor}>
-            {state}
-          </span>
-          
-        </Grid>
-        <Grid container item spacing={3} className="ButtonBar">
-          <Grid item>
-            <AddButton clicked={addHandler} />
+        <Grid container item spacing={4} className='topSection'>
+          <Grid item xs={12} className='numberSection' >
+            <span style={{color: `${fontColor}`, fontSize: (fontSizeState +'px'), fontFamily: `${fontStyle}`}} >
+              {state}
+            </span>
           </Grid>
-          <Grid item >
-            {state > 0 ? 
-              <SubtractButton clicked={subHandler} />  : 
-              <SubDisabledButton />
-              }     
-          </Grid>
-          <Grid item>
-            { state > 0 ?
-            <ResetButton clicked={resetHandler}/> :
-            <ResetDisabledButton />
-            }
+          <Grid container item spacing={3} className="ButtonBar">
+            <Grid item>
+              <AddButton clicked={addHandler} />
             </Grid>
+            <Grid item >
+              {state > 0 ? 
+                <SubtractButton clicked={subHandler} />  : 
+                <SubDisabledButton />
+                }     
+            </Grid>
+            <Grid item>
+              { state > 0 ?
+              <ResetButton clicked={resetHandler}/> :
+              <ResetDisabledButton />
+              }
+              </Grid>
+          </Grid>
         </Grid>
         <Grid container item spacing={3} className="StyleBar">
             <Grid item>
@@ -87,7 +113,7 @@ function App() {
               <br />
                   {darkMode ? 'Dark Mode' : 'Light Mode'}
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={6}>
                 <FormControl variant='filled' >
                   <InputLabel id='changeFont'>
                       Change Font
@@ -108,10 +134,24 @@ function App() {
                       </Select>
                 </FormControl>
             </Grid>
-            <Grid item>
-              <TwitterPicker color={fontColor} onChange={setColorHandler}/>
+            <Grid item xs={9} style={{paddingTop: '50px'}}>
+              <Slider
+                  defaultValue={100}
+                  getAriaValueText={valuetext}
+                  aria-labelledby="discrete-slider-always"
+                  // step={25}
+                  marks={marks}
+                  valueLabelDisplay="on"
+                  onChange={setFontSizeHandler}
+                />
             </Grid>
-        </Grid>
+            <Grid item xs={6}>
+              <SketchPicker color={fontColor} onChange={setColorHandler}/>
+            </Grid>
+            <Grid item xs={6}>
+              <SketchPicker color={fontColor} onChange={setColorHandler}/>
+            </Grid>
+            </Grid>
       </Grid>
       </Paper>
     </ThemeProvider>
