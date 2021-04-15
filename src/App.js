@@ -4,6 +4,7 @@ import { createMuiTheme, Grid, MenuItem, FormControl, InputLabel, Paper, Select,
 import { deepPurple, purple } from '@material-ui/core/colors'
 import './App.css';
 
+import BigNumber from './Components/MainSections/BigNumber'
 import AddButton from './Components/Buttons/AddButton'
 import SubtractButton from './Components/Buttons/SubtractButton'
 import SubDisabledButton from './Components/Buttons/SubDisabledButton'
@@ -84,11 +85,7 @@ function App() {
       <Paper className="App" >
       <Grid container spacing={4} className='mainGrid'>
         <Grid container item spacing={4} className='topSection'>
-          <Grid item xs={12} className='numberSection' >
-            <span style={{color: `${fontColor}`, fontSize: (fontSizeState +'px'), fontFamily: `${fontStyle}`}} >
-              {state}
-            </span>
-          </Grid>
+          <BigNumber color={fontColor} size={fontSizeState} fontFam={fontStyle} state={state}/>
           <Grid container item spacing={3} className="ButtonBar">
             <Grid item>
               <AddButton clicked={addHandler} />
