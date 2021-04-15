@@ -10,11 +10,7 @@ import DarkToggle from './Components/MainSections/DarkToggle'
 import FontSelector from './Components/MainSections/FontSelector'
 import SizeSelector from './Components/MainSections/SizeSelector'
 import ColorSelectorBar from './Components/MainSections/ColorSelectorBar'
-
-import ColorModal from './HOCs/ColorModal'
-import Backdrop from '@material-ui/core/Backdrop';
-
-import { SketchPicker } from 'react-color'
+import ColorPickDialog from './HOCs/ColorPickDialog'
 
 function App() {
   const [state, setState] = useState(0)
@@ -22,7 +18,7 @@ function App() {
   const [fontStyle, setFontStyle] = useState('DimitriSwank')
   const [darkMode, setDarkMode] = useState(false)
   const [fontColor, setFontColor] = useState('')
-  const [modalOpen, setModalOpen] = useState(false)
+  const [dialogOpen, setDialogOpen] = useState(false)
   
   const theme = createMuiTheme({
     palette: {
@@ -85,8 +81,8 @@ function App() {
     setFontColor(color.hex)
   }
 
-  const modalToggleHandle = () => {
-    setModalOpen(!modalOpen)
+  const dialogToggleHandler = () => {
+    setDialogOpen(!dialogOpen)
   }
 
   return (
@@ -130,19 +126,14 @@ function App() {
               changed={ setFontSizeHandler }
             />
           </Grid>
-            <ColorModal 
-              modOpen={modalOpen}
-              clicked={modalToggleHandle}
-              backComp={Backdrop}
+            <ColorPickDialog 
+              open={ dialogOpen }
+              closed = { dialogToggleHandler }
             />
-            <ColorSelectorBar />
-            
-            <Grid item xs={6}>
-              <SketchPicker color={fontColor} onChange={setColorHandler}/>
-            </Grid>
-            <Grid item xs={6}>
-              <SketchPicker color={fontColor} onChange={setColorHandler}/>
-            </Grid>
+            <ColorSelectorBar 
+              fontChange={dialogToggleHandler}
+              bkgroundChange={dialogToggleHandler}
+            />
             </Grid>
       </Grid>
       </Paper>

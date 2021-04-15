@@ -2,6 +2,8 @@ import React from 'react'
 
 import { Modal, Fade} from '@material-ui/core'
 
+import ColorPickerMod from './ColorPickerMod'
+
 const ColorModal = ( props ) => {
     return (
         <Modal
@@ -17,10 +19,7 @@ const ColorModal = ( props ) => {
             }}
         >
             <Fade in={props.modOpen}>
-                <div>
-                    <h2 id="transition-modal-title">Transition modal</h2>
-                    <p id="transition-modal-description">react-transition-group animates me.</p>
-                </div>
+                <ColorPickerMod />
             </Fade>
         </Modal>
     )
