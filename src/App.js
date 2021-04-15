@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Button, createMuiTheme, Grid, Paper, ThemeProvider } from '@material-ui/core'
+import { Button, createMuiTheme, Grid, Paper, ThemeProvider, Tooltip } from '@material-ui/core'
 import { deepPurple, purple } from '@material-ui/core/colors'
 import './App.css';
 
@@ -87,7 +87,7 @@ function App() {
       <Paper className="App" >
         <Grid container spacing={4} className='mainGrid'>
           
-          <Grid container item spacing={4} className='topSection'>
+          <Grid container item spacing={4}>
             
             <BigNumber 
               color={fontColor} 
@@ -95,6 +95,7 @@ function App() {
               fontFam={fontStyle} 
               state={state}
               background={bkgroundColor}
+              classes='bigNumber'
             />
             <ButtonBar 
               addClick={addHandler}
@@ -106,11 +107,12 @@ function App() {
           </Grid>
 
           <Grid container item spacing={3} className="StyleBar">
-            
+            <Tooltip title='Warning' aria-label='Resets Custom Colors'>
             <DarkToggle 
               mode={darkMode}
               clicked={darkModeToggle}
             />
+            </Tooltip>
             <FontSelector 
               font={ fontStyle }
               clicked={ changeFontHandler }
@@ -123,7 +125,7 @@ function App() {
               changed={ setFontSizeHandler }
             />
           </Grid>
-          <Grid container item spacing={3}>
+          <Grid container item spacing={3} className='colorButtons'>
           <ColorPickDialog 
             open={ fontdialogOpen }
             color={ fontColor }
@@ -141,7 +143,7 @@ function App() {
                     variant="contained"
                     key='font'
                     //color="primary"
-                    startIcon={ <StopIcon /> }
+                    startIcon={ <StopIcon style={{color: `${fontColor}`}}/> }
                     onClick={ fontColorDialogToggle }
                 >Font Color</Button>
             </Grid>
@@ -150,7 +152,7 @@ function App() {
                     variant="contained"
                     key='Background'
                     //color="secondary"
-                    startIcon={ <StopIcon /> }
+                    startIcon={ <StopIcon style={{color: `${bkgroundColor}`}}/> }
                     onClick={ bkgroundColorDialogToggle }
                     
                 >BackGround Color</Button>
