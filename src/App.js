@@ -16,7 +16,7 @@ import StopIcon from '@material-ui/icons/Stop';
 function App() {
   const [state, setState] = useState(0)
   const [fontSizeState, setFontSizeState] = useState(100)
-  const [fontStyle, setFontStyle] = useState('DimitriSwank')
+  const [fontStyle, setFontStyle] = useState('Dimitri-Swank')
   const [darkMode, setDarkMode] = useState(false)
   const [fontColor, setFontColor] = useState('')
   const [bkgroundColor, setBkGroundColor] = useState('')

@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Dimitri-Swank';
-  src:url('./HOCs/fonts/Dimitri-Swank.ttf.c240f840.woff') format('woff'),
-      url('./HOCs/fonts/Dimitri-Swank.ttf.18d64c91.svg') format('svg'),
-      url('./HOCs/fonts/Dimitri-Swank.ttf.cf92afcb.eot');
+  src:local('Dmitri-Swank'), url('./fonts/Dimitri-Swank.ttf.c240f840.woff') format('woff'),
+      local('Dmitri-Swank'), url('./fonts/Dimitri-Swank.ttf.18d64c91.svg') format('svg'),
+      local('Dmitri-Swank'), url('./fonts/Dimitri-Swank.ttf.cf92afcb.eot');
   font-weight: normal;
   font-style: normal;
 }
