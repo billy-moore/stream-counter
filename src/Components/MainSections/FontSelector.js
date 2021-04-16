@@ -15,7 +15,7 @@ const FontSelector = ( props ) => {
                     value={ props.font}
                     onChange={ props.clicked }
                     >
-                        <MenuItem value={'DimitriSwank'}>Dimitri Swank</MenuItem>
+                        <MenuItem value={'Dimitri-Swank'}>Dimitri Swank</MenuItem>
                         <MenuItem value={'Roboto'}>Roboto</MenuItem>
                         <MenuItem value={'ZenDots'}>Zen Dots</MenuItem>
                         <MenuItem value={'Arvo'} > - Arvo - </MenuItem>
