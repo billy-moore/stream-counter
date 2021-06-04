@@ -116,6 +116,7 @@ function App() {
             <FontSelector 
               font={ fontStyle }
               clicked={ changeFontHandler }
+              default={ fontStyle }
             />
 
           <Grid container item spacing={3} className='numberSize'>

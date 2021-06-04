@@ -13,6 +13,7 @@ const FontSelector = ( props ) => {
                     labelId='changeFont'
                     id='font'
                     value={ props.font}
+                    defaultValue={ props.default }
                     onChange={ props.clicked }
                     >
                         <MenuItem value={'Dimitri-Swank'}>Dimitri Swank</MenuItem>
